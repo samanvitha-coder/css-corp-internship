@@ -1,0 +1,40 @@
+ARRAY
+-An array is a container object that holds a fixed number of values of a single type.
+-The length of an array is established when the array is created.
+-After creation, its length is fixed.
+-Array is called from the stack and is stored in the heap memory.
+-All array subscripts begin at 0.
+
+Types of Array:
+-One Dimensional
+-Two Dimensional
+-Multi dimensional
+
+One Dimensional:
+    datatype[] array_name;
+Ex:-double[] myList = new double[10];
+
+Two Dimensional:
+Array of four arrays of five integers each:
+    int[][] twoDim = new int[4][5];
+
+Enhanced For Loops:
+-The enhanced for loop has the following characteristics:
+    Simplified iteration over collections
+    Much shorter, clearer, and safer
+    Effective for arrays
+    Simpler when using nested loops
+    Iterator disadvantages removed
+
+Array Resizing:
+-You cannot resize an array.
+-You can use the same reference variable to refer to an entirely new array, such as:
+    int[] myArray = new int[6];
+    myArray = new int[10];
+
+Copying Arrays
+-The System.arraycopy() method to copy arrays
+int[] myArray = { 1, 2, 3, 4, 5, 6 };
+int[] hold = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+System.arraycopy(myArray, 0, hold, 0, myArray.length);
+
