@@ -1,0 +1,79 @@
+What Is An Exception?
+-An exception is an event, which occurs during the execution of a program, that disrupts the normal flow of the program's instructions.
+-An exception can occur for many different reasons:
+    A user has entered invalid data.
+    A file that needs to be opened cannot be found.
+    A network connection has been lost in the middle of communications
+    the JVM has run out of memory.
+Some of these exceptions are caused by user error, others by programmer error, and others by physical resources that have failed in some manner.
+
+Types Of Exception
+-Checked Exception
+-Unchecked Exception
+    Error
+    Runtime Exception
+
+Checked Exception
+-Exceptional conditions that a well-written application should anticipate and recover from errors.
+
+Unchecked Exception:
+1)Error
+-Exceptional conditions that are external to the application, and that the application usually cannot anticipate or recover from
+    Example : File processing
+        An application successfully opens a file for input, but is unable to read the file because of a hardware or system malfunction.
+        The unsuccessful read will throw Error.
+-It makes sense for the program to print a stack trace and exit.
+2)Runtime Exception
+-These are exceptional conditions that are internal to the application, and that the application usually cannot anticipate or recover from.
+-These usually indicate programming bugs, such as logic errors or improper use of an packages.
+
+Throwing an Exception
+-When an error occurs within a method, the method creates an object and hands it off to the runtime system – exception object
+-The exception object contains information about the error
+    Type of exception
+    The state of the program when the error occurred
+-Creating an exception object and handing it to the runtime system is called throwing an exception.
+
+Call Stack
+-After a method throws an exception, the runtime system attempts to find something in the call stack to handle it.
+-The list of methods that had been called to get to the method where the error occurred is known as the call stack.
+
+Catching the Exception:
+-The search begins with the method in which the error occurred
+-Proceeds through the call stack in the reverse order in which the methods were called.
+- The runtime system passes the exception object to the appropriate “ exception handler - a method that contains a block of code that can handle the exception “
+-The type of the exception object thrown should match the type that can be handled by the handler
+-The exception handler chosen is said to catch the exception
+
+1)Try & catch block that catches the exception
+2)A method that specifies that it can throw the exception. The method must provide a throws clause.
+3)Handle exception by using try-catch-finally block
+
+TRY BLOCK
+-The first step in constructing an exception handler is to enclose the code that might throw an exception within a try block
+try
+{ code }
+catch and finally blocks
+
+CATCH BLOCK
+-If an exception occurs within the try block, that exception is handled by an exception handler associated with it.
+-To associate an exception handler with a try block, a catch block is to be mentioned after it
+try
+{ }
+catch (ExceptionType name)
+{ }
+-Multiple catch blocks can also be declared.
+
+THROWABLE CLASS
+-Each catch block is an exception handler that handles the type of exception indicated by its argument.
+-The argument type,ExceptionType, declares the type of exception that the handler can handle and must be the name of a class that inherits from theThrowable class.
+
+FINALLY BLOCK
+-The finally block always executes when the try block exits.
+-Finally block is executed even if an unexpected exception occurs.
+
+THE THROWS
+-If a method does not handle a checked exception, the method must declare it using the throws keyword.
+-The throws keyword appears at the end of a method's signature
+-A method can declare that it throws more than one exception and the exceptions are declared in a list separated by commas.
+

@@ -1,0 +1,13 @@
+ENUM
+-An enum is a data type which contains fixed set of constants.
+Ex:-It can be used for days of the week (SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY and SATURDAY)
+-Enums can be thought of as classes that have fixed set of constants.
+
+Features
+-enum improves type safety and can be used in switch statements.
+-enum can be traversed and can have fields, constructors and methods
+-enum may implement many interfaces but cannot extend any class because it internally extends Enum class
+
+-The enum constants have initial value that starts from 0, 1, 2, 3 and so on.
+-But we can initialize the specific value to the enum constants by defining fields and constructors.
+-Enum can have fields, constructors and methods

@@ -1,0 +1,42 @@
+Final
+- Used to restrict the usage
+- The final keyword can be used with
+    - variable
+    - method
+    - class
+
+Final Variable:
+    Constants are static final variables
+    Once declared cannot be initialised again.
+    Ex: private final long customerID
+
+/*
+final class Bike {}
+
+    class Honda1 extends Bike
+    {
+        void run()
+        {
+            System.out.println("running safely with 100kmph");
+        }
+        public static void main(String args[]){
+            Honda1 honda= new Honda1();
+            honda.run();
+        }
+    }
+    */
+ This program throws an error since a final class can't be extended
+
+ Final Method
+-A method can be declared final if it has an implementation that should not be changed and it is critical to the consistent state of the object.
+-If you make any method as final, you cannot override it. classed.
+-During Inheritance , final method is inherited but you cannot override it
+
+Final Parameter
+/*
+int cube(final int n){
+n=n+2;//can't be changed as n is final
+n*n*n;
+*/
+n is declared as final but in the next line it is changed
+-It raises an error

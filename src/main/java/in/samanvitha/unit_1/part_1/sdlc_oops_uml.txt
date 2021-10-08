@@ -1,0 +1,127 @@
+SDLC Models:
+There are different models. They are:
+-The Waterfall Model
+-The Spiral Model
+-V-model
+-Agile model
+
+Any model is done by implementing the following steps
+-Requirements
+-Design
+-Implementation
+-Verification
+-Maintenance
+
+1)Waterfall Model
+-The Waterfall Model was the first Process Model to be introduced.
+-It is also referred to as a linear-sequential life cycle model. It is very simple to understand and use.
+-In a waterfall model, each phase must be completed before the next phase can begin and there is no
+overlapping in the phases.
+
+2)Spiral Model
+-The spiral model is a risk-driven software development process model. Based on the unique risk patterns of a given project, the spiral model guides a team to adopt elements of one or more process models, such as incremental, waterfall, or evolutionary prototyping.
+
+3)V-Model
+-The V-model is a type of SDLC model where process executes in a sequential manner in V-shape.
+-It is also known as Verification and Validation model.
+-It is based on the association of a testing phase for each corresponding development stage.
+-Development of each step directly associated with the testing phase.
+-The next phase starts only after completion of the previous phase i.e. for each development activity, there is a testing activity corresponding to it.
+
+4)Agile Model
+-The meaning of Agile is swift or versatile.
+-"Agile process model" refers to a software development approach based on iterative development.
+-Agile methods break tasks into smaller iterations, or parts do not directly involve long term planning.
+-The project scope and requirements are laid down at the beginning of the development process.
+-Plans regarding the number of iterations, the duration and the scope of each iteration are clearly defined in advance
+
+OOAD(Object Oriented Analysis and Design)
+-Used to create visual modeling throughout the development life cycles to foster better stakeholder communication and product quality
+-Identifying the objects of a system.
+-Identify their relationships.
+
+Objects:
+    Objects represent an entity and the basic building block.
+Class:
+    Class is the blue print of an object.
+Abstraction:
+    Abstraction represents the behavior of an real world entity.
+Encapsulation:
+    Encapsulation is the mechanism of binding the data together and hiding them from outside world.
+Inheritance:
+    Inheritance is the mechanism of making new classes from existing one.
+Polymorphism:
+    It defines the mechanism to exists in different forms.
+
+i)Object Oriented Analysis
+-Identifying the objects of a system.
+
+ii)Object Oriented Design:
+-Identify their relationships and make a design.
+
+iii)Object Oriented Implementation:
+-The design is implemented using object oriented programming language.
+
+UML (Unified Modeling Language)
+-The language is very rich, and carries with it many aspects of Software Engineering best practice
+-UML is different from the other common programming languages like C++, Java, COBOL etc.
+-UML is a pictorial language used to make software blue prints.
+
+Role of UML in OO analysis and design:
+-UML is a modeling language used to model software and non software systems.
+-The OO analysis & design is transformed into UML diagrams according to the requirement.
+-It offers a way to visualize a system's architectural blueprints in a diagram
+-The UML is a graphical language for capturing the artifacts of software developments.
+-The language provides us with the notations to produce models.
+
+History:
+-Grady Booch, Jim Rumbaugh and Ivar Jacobson had implemented UML.
+-They were called as Amigos.
+1)Grady Booch, Rational Corp.,
+–Excellent for design and implementation
+
+2)Jim Rumbaugh,GeneralElectrics.,
+–Best for analysis
+
+3)IvarJacobson
+–Use Case -Powerful technique for understanding the behavior of the entire system.
+
+
+Use Cases:
+    How will our system interact with the outside world?
+Class & Object Diagram:
+    What objects do we need? How will they be related?
+Collaboration Diagram:
+    How will the objects interact?
+Sequence Diagram:
+    How will the objects interact(order/time)?
+State Diagram:
+    What states should our objects be in?
+Package Diagram:
+    How are we going to modularize our development?
+Component Diagram:
+    How will our software components be related?
+Deployment Diagram:
+    How will the software be deployed?
+
+What is a conceptual model?
+–It helps to understand the entities in the real world and how they interact with each other.
+-For example, some good examples of concepts would be:
+    –Lift in a lift control system
+    –Order in a home shopping system
+
+UML diagrams are classified into views:
+1)User View:
+    UseCase Diagram
+2)Structural View:
+    Class Diagram
+    Object Diagram
+3)Implementation View:
+    Component Diagram
+4)Behavioral Diagram:
+    Sequence Diagram
+    Collaboration Diagram
+    StateChart Diagram
+    Activity Diagram
+5)Environmental View:
+    Deployment Diagram
