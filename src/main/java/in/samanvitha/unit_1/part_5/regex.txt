@@ -1,0 +1,237 @@
+Regular Expressions
+-A regular expression is a kind of pattern  that can be applied to text (Strings, in Java)
+-A regular expression either matches the text (or part of the text), or it fails to match
+-If a regular expression matches a part of the text, then you can easily find out which part
+-If a regular expression is complex, then you can easily find out which parts of the regular expression match which parts of the text
+-They are also used for manipulating text and data.
+-With this information, you can readily extract parts of the text, or do substitutions in the text
+-Regular expression (or in short regex)  is used for parsing, filtering, validating, and extracting meaningful information from large text, such as logs and output generated from other programs
+
+
+Perl and Java
+-Regular Expression (Regex or Regexp or RE) in Perl is a special text string for describing a search pattern within a given text.
+-Regex in Perl is linked to the host language and is not the same as in PHP, Python, etc. Sometimes it is termed as “Perl 5 Compatible Regular Expressions“.
+-It is heavily used in server-side programming, because
+  - Much server-side programming is text manipulation
+  - Regular expressions are built into the syntax of Perl
+The java.util.regex package primarily consists of the following three classes −
+
+- Pattern Class − A Pattern object is a compiled representation of a regular expression.
+ To create a pattern, you must first invoke one of its public static compile() methods,          which will then return a Pattern object. These methods accept a regular expression as the   first argument.
+
+- Matcher Class − A Matcher object is the engine that interprets the pattern and performs    match operations against an input string. You obtain a Matcher object by invoking the matcher() method on a Pattern object.
+
+- PatternSyntaxException − A PatternSyntaxException object is an unchecked exception    that  indicates a syntax error in a regular expression patter.
+
+- Matcher Class − A Matcher object is the engine that interprets the pattern and performs match operations against an input string.  You obtain a Matcher object by invoking the matcher() method on a Pattern object.
+
+- PatternSyntaxException − A PatternSyntaxException object is an unchecked exception that  indicates a syntax error in a regular expression patter
+
+ Example:
+- The regular expression "[a-z]+" will match a sequence of one or more lowercase letters
+  [a-z] means any character from a through z, inclusive
+  + means “one or more”
+- Suppose we apply this pattern to the String "Now is the time"
+   - There are three ways we can apply this pattern:
+   - To the entire string: it fails to match because the string contains characters other  than    	lowercase letters
+   - To the beginning of the string: it fails to match because the string does not begin with a 	   	lowercase letter
+   - To search the string: it will succeed and match ow
+   - If applied repeatedly, it will find is, then the, then time, then fail
+   - First, you must compile the pattern
+	import java.util.regex.*;
+	Pattern p = Pattern.compile("[a-z]+");
+	Next, you must create a matcher for a specific piece of text by sending a message to 		your pattern
+	Matcher m = p.matcher("Now is the time");
+Points to remember:
+- Pattern and Matcher are both in java.util.regex
+- Neither Pattern nor Matcher has a public constructor; you create these by using methods   	in  the Pattern class
+- The matcher contains information about both the pattern to use and the text to which it  		will be applied
+-There are three variants of matches() method. This article depicts about all of them, as follows:
+  -1: String matches() : This method tells whether or not this string matches the given regular  	expression. An invocation of this method of the form str.matches(regex) yields exactly 		the same result as the expression Pattern.matches(regex, str).
+
+- Syntax:
+    public boolean matches(String regex)
+    Parameters
+    regex : the regular expression to which this string is to be matched.
+    Return Value
+    This method returns true if, and only if, this string matches the given regular expression.
+- lookingAt()
+    Used to match the pattern only at the beginning of the string.
+- find()
+   Used to match the pattern in the string (not necessarily at the first character of the 		  	string), starting at the beginning of the string or, if the method was previously called 		and succeeded, at the first character not matched by the previous match.
+- start(), end()
+   Returns the character position in the string of the starting and ending characters that 		matched.
+- groupCount()
+   Returns the number of parenthesized capture groups, if any; returns 0 if no groups were 		used.
+- After a successful match, m.start() will return the index of the first character matched
+- After a successful match, m.end() will return the index of the last character matched, plus 	one
+    import java.util.regex.*;
+
+    public class RegexTest {
+    	public static void main(String args[]) {
+        String pattern = "[a-z]+";
+        String text = "Now is the time";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(text);
+        while (m.find()) {
+            System.out.print(text.substring(m.start(), m.end()) + "*");
+           }
+        }
+     }
+  Output: ow*is*the*time*
+ Additional Methods:
+- f m is a matcher, then
+- m.replaceFirst(replacement) returns a new String where the first substring matched by the 	pattern has been replaced by replacement
+- m.replaceAll(replacement) returns a new String where every substring matched by the  		pattern has been replaced by replacement
+- m.find(startIndex) looks for the next pattern match, starting at the specified index
+- m.reset() resets this matcher
+- m.reset(newText) resets this matcher and gives it new text to examine (which may be a  		String, StringBuffer, or CharBuffer)
+
+abc		exactly this sequence of three letters
+
+[abc]		any one of the letters a, b, or c
+
+[^abc]		any character except one of the letters a, b, or c
+			(immediately within an open bracket, ^ means “not,”
+		 but anywhere else it just means the character ^)
+
+[a-z]		any one character from a through z, inclusive
+
+[a-zA-Z0-9]	any one letter or digit
+
+Sequences and alternatives
+- If one pattern is followed by another, the two patterns must match consecutively
+- For example, [A-Za-z]+[0-9] will match one or more letters immediately followed by one  	digit
+- The vertical bar, |, is used to separate alternatives
+- For example, the pattern abc|xyz will match either abc or xyz
+
+Some predefined character classes:
+
+- \d (backslash followed by the letter d)
+   - This will match any digit.
+   - \d matches any digit in the 0-9 range.
+- \D (backslash followed by uppercase D)
+   - This matches any character that is not a digit.
+   -  \D matches a, $, or _.
+-  \s (backslash followed by the letter s)
+  - Matches any whitespace, including tab, space, or newline.
+  - \s matches [ \t\n].
+- \S (backslash followed by uppercase S)
+  - Matches any non-whitespace.
+  -\S matches the opposite of \s
+-  \w (backslash followed by the letter w)
+  - Matches any word character that means all alphanumeric characters or underscore.
+  - \w will match [a-zA-Z0-9_], so it will match any of these strings: "abc", "a123", or  	"pq_12_ABC"
+- \W (backslash followed by the letter W)
+  - Matches any non-word character, including whitespaces. In regex, any character that is 		not matched by \w can be matched using \W.
+  - It will match any of these strings: "+/=", "$", or " !~"
+
+Boundary matchers:
+- These patterns match the empty string if at the specified position:
+
+	^	the beginning of a line
+	$	the end of a line
+	\b	a word boundary
+	\B	not a word boundary
+	\A	the beginning of the input (can be multiple lines)
+	\Z	the end of the input except for the final terminator, if and
+	\z	the end of the input
+	\G	the end of the previous match
+
+Types of Quantifiers:
+- Quantity
+- Exact count {n}
+    A number in curly braces {n}is the simplest quantifier. When you append it to a 		  character or character class, it specifies how many characters or character classes    		you want to match.
+ - Reluctant quantifiers − a non-greedy/reluctant quantifier matches as little as possible,  		initially the non-greedy quantifier matches the first character if match not occurred it 		adds another character from the input string and tries to match. If you place a “?” 		after a greedy quantifier it becomes reluctant or non-greedy quantifier.
+- A reluctant quantifier will match as little as possible, then take more if it needs to
+  You make a quantifier reluctant by appending a ?:
+  X??     X*?     X+?     X{n}?     X{n,}?     X{n,m}?
+
+-  Greedy quantifiers − Greedy quantifiers are the default quantifiers. A greedy quantifier  		matches as much as possible from the input string (longest match possible) if match 		not occurred it leaves the last character and matches again.
+- If you place a "+" after a greedy quantifier it becomes possessive quantifier. Following 	is the list of possessive quantifiers:
+
+	X?		optional, X occurs once or not at all
+	X*		X occurs zero or more times
+	X+		X occurs one or more times
+	X{n}	X occurs exactly n times
+	X{n,}		X occurs n or more times
+	X{n,m}	X occurs at least n but not more than m times
+
+- Possessive quantifiers − A possessive quantifier is similar to a greedy quantifier the only 		difference is it tries to match as many character as it can initially and, if match not 		occurred unlike greedy quantifier it does not backtrack.
+- A possessive quantifier will match as much as it can, and never let go
+  You make a quantifier possessive by appending a +:
+  X?+     X*+     X++     X{n}+     X{n,}+     X{n,m}+
+
+Capturing groups:
+- In regular expressions, parentheses are used for grouping, but they also capture (keep for 		later use) anything matched by that part of the pattern
+- Example: ([a-zA-Z]*)([0-9]*) matches any number of letters followed by any number 	  of digits
+- If the match succeeds, \1 holds the matched letters and \2 holds the matched digits
+- In addition, \0 holds everything matched by the entire pattern
+- Capturing groups are numbered by counting their opening parentheses from left to right:
+	( ( A ) ( B ( C ) ) )
+	1 2     3   4
+	\0 = \1 = ((A)(B(C))),     \2 = (A),     \3 = (B(C)),     \4 = (C)
+	Example: ([a-zA-Z])\1 will match a double letter, such as letter
+
+Capturing groups in Java
+- If m is a matcher that has just performed a successful match, then
+	m.group(n) returns the String matched by capturing group n
+- This could be an empty string
+- This will be null if the pattern as a whole matched but this particular group didn’t match   	anything
+	m.group() returns the String matched by the entire pattern (same as m.group(0))
+	This could be an empty string
+	If m didn’t match (or wasn’t tried), then these methods will throw an 			   		IllegalStateException
+
+Example use of capturing groups
+- Suppose word holds a word in English
+- Also suppose we want to move all the consonants at the beginning of word (if any) to the 		end of the word (so string becomes ingstr)
+- Pattern p = Pattern.compile("([^aeiou]*)(.*)");
+- Matcher m = p.matcher(word);
+	if (m.matches()) {
+		System.out.println(m.group(2) + m.group(1));
+	}
+- Note the use of (.*) to indicate “all the rest of the characters”
+
+Double backslashes:
+- The backslash suppresses the special meaning of the character it precedes, and turns it 		into an ordinary character.
+-  To insert a backslash into your regular expression pattern, use a double backslash
+     ('\\'). ... Zero or one of the character or expression to the left. Hence, 'a?' will match 	'a' or the empty string ' '.
+- Backslashes have a special meaning in regular expressions; for example, \b means a  	  word boundary
+- Backslashes have a special meaning in Java; for example, \b means the backspace   		  character
+- Java syntax rules apply first!
+- If you write "\b[a-z]+\b" you get a string with backspace characters in it--this is not  	 		what   you want!
+- Remember, you can quote a backslash with another backslash, so "\\b[a-z]+\\b" gives       	the  correct string
+
+Escaping metacharacters
+- The way to escape a metacharacter is by adding a backslash character in front of the  	  metacharacter: "\." .
+	 Regular Expression 	Matches
+		\[dog\]	          	  [dog]
+		   \\cat	                   \cat
+              3\.14159	                 3.14159
+			A\+    	           A+
+
+Spaces:
+- There is only one thing to be said about spaces (blanks) in regular expressions, but it’s   		important:
+- Spaces are significant!
+- A space stands for a space--when you put a space in a pattern, that means to match a  		space in the text string
+- It’s a really bad idea to put spaces in a regular expression just to make it look better
+
+Additions to the String class
+- All of the following are public:
+	public boolean matches(String regex)
+	public String replaceFirst(String regex, String replacement)
+	public String replaceAll(String regex, String replacement)
+	public String[ ] split(String regex)
+	public String[ ] split(String regex, int limit)
+ - If the limit n is greater than zero then the pattern will be applied at most n - 1 times, 	  the array's length will be no greater than n, and the array's last entry will contain all   	input beyond the last matched delimiter.
+-  If n  is non-positive then the pattern will be applied as many times as possible
+
+Thinking in regular expressions
+- Regular expressions are not easy to use at first
+	-It’s a bunch of punctuation, not words
+	-The individual pieces are not hard, but it takes practice to learn to put them together 		correctly
+	-Regular expressions form a miniature programming language
+	-It’s a different kind of programming language than Java, and requires you to learn 		new thought patterns
+	-In Java you can’t just use a regular expression; you have to first create Patterns and 		Matchers
+	-Java’s syntax for String constants doesn’t help, either
+

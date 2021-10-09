@@ -1,0 +1,153 @@
+Background and History
+-JSR 310 started in 2007 by Stephen Colebourne to build on Joda-Time value and experience.
+-Very successful project to provide a state of the art Calendar API to Java.
+
+Introduction to Java Time:
+ISO 8601 Core Calendar – java.time
+	– LocalTime, LocalDate, LocalDateTime, ZonedDateTime
+	– Clock, Instant, Duration, Period, ZoneId, Month, Date
+Parsing and Formatting – java.time.format
+	– DateTimeFormat, DateTimeFormatBuilder, standard formats, patterns, styles
+TimeZone – java.time.zone
+	– ZoneRules, transitions, etc.
+Regional Calendars – java.time.chrono
+	– Chronology, Era, ChronoLocalDate, ChronoLocalDateTime, ChronoZonedDateTime
+	– Japanese, ThaiBuddhist, Minguo, Hijrah calendars
+Framework – java.time.temporal
+	– Units, Fields, Adjusters, Temporal, TemporalAccessor, TemporalAmount,
+
+ISO Calendar Types:
+	LocalDate 2015-10-03
+	LocalTime 11:05:30.987654321
+	LocalDateTime 2015-10-03T11:05:30
+	Year 2010
+	YearMonth 2015-10
+	MonthDay -10-03
+The LocalDate represents a date in ISO format (yyyy-MM-dd) without time. We can use it to store dates like birthdays and paydays.
+
+An instance of current date can be created from the system clock:
+
+LocalDate localDate = LocalDate.now();
+And we can get the LocalDate representing a specific day, month and year by using the of method or the parse method.
+
+For example, these code snippets represent the LocalDate for February 20, 2015:
+LocalDate.of(2021, 10, 8);
+LocalDate.parse("2021-10-8");
+
+It describes the period between the given 2 dates.
+int five = Period.between(initialDate, finalDate).getDays();
+
+Java Time API Design
+- Fluent API
+- Immutable instances
+- Thread safe
+- Strong types
+- Fit for purpose types
+
+java.util Date and Calendar
+-Not Fluent
+- Mutable instances – clone needed
+- Not Thread safe
+- Weakly typed calendars
+- One size fits all API
+
+Getting Date Time Fields
+ZonedDateTime zdt = ...;
+	int nanos = zdt.getNano();
+	int millis = zdt.get(MILLIS_OF_SECOND);
+	int second = zdt.getSecond();
+	int minute = zdt.getMinute();
+	int hour = zdt.getHour();
+	int day = zdt.getDayOfMonth();
+
+Setting Date Time Fields
+ZonedDateTime zdt = ...;
+	zdt = zdt.withNano(1);
+	Zdt = zdt.with(MILLI_OF_SECOND, 1);
+	zdt = zdt.withSecond(1);
+	zdt = zdt.withMinute(1);
+	zdt = zdt.withHour(1);
+	zdt = zdt.withDayOfMonth(1);
+
+Calendar Neutral API
+-The core java.time APIs are designed to avoid common errors
+- For other calendars common assumptions may be invalid
+	– Don't assume the number of months of year
+	– Use the API to do all calendar arithmetic. Plus/minus days, months, years
+	– Do not assume roll-over at particular numbers of days-per-month
+	– Don't assume the week starts on Monday (ISO), use WeekFields.
+	– Don't assume the month numbers are bound to specific months, use
+DateTimeFormatter to get names
+	-A Chronology is added to provide the correct semantics for the calendar
+
+An example
+/*
+import static java.util.Calendar.*;
+Locale locale = …;
+Calendar cal = Calendar.getInstance(locale);
+int day = cal.get(DAY_OF_MONTH);
+int month = cal.get(MONTH) + 1;
+int year = cal.get(YEAR);
+int era = cal.get(ERA);
+Calendar nextMonth = cal.clone();
+nextMonth.set(DAY_OF_MONTH, 1);
+nextMonth.add(MONTH, 1);
+*/
+
+DateTimeFormatter Builder
+-Factory used to build a template for a sequence of fields to be parsed or formatted
+-Literals, for example “/”, “-”, “:”, or any string
+-Numeric values with control of width, sign, leading zeros
+-Text indexed by locale and style – short, narrow, full, standalone
+-Patterns indexed by locale - date, time, date-time
+-Fraction control, with control of width and decimal points
+-Field padding to width and character
+-ZoneId, ZoneOffset, Chronology, Instant specialized fields
+-Case sensitive vs. in-sensitive parsing
+-Optional fields
+-Default values if not present in input
+-Strict vs. Lenient parsing mode
+-Concatenation of Formatters
+
+An example of using formatter using tc which means complete date format
+import java.util.Calendar;
+import java.util.Formatter;
+
+public class MainClass {
+  public static void main(String args[]) {
+    Formatter fmt = new Formatter();
+
+    // .
+    fmt = new Formatter();
+    fmt.format("%tc", Calendar.getInstance());
+    System.out.println(fmt);
+
+  }
+}
+
+Sat Oct 09 10:26:44 PST 2021
+
+Predefined Date Time Formats
+ZonedDateTime now = ZonedDateTime.now();
+String toString = now.toString();
+
+DateTimeFormatter format = DateTimeFormatter.ISO_ZONED_DATE_TIME;
+String s = now.format(format);
+
+DatePicker Control in JavaFX
+	Settable Chronology
+	Supports Regional Formatting via Locale
+	Customizable Cell Factory
+
+An example of datePicker
+import javafx.scene.control.DatePicker;
+ datePicker = new DatePicker();
+ datePicker.setOnAction(new EventHandler<ActionEvent>() {
+ @Override public void handle(ActionEvent t) {
+ LocalDate isoDate = datePicker.getValue();
+ println("Selected date: “ + isoDate);
+ }
+ });
+Output:
+ Selected date: 2021-10-9
+
