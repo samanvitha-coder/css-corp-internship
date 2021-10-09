@@ -1,0 +1,62 @@
+Method
+-A method is a code block that contains a series of statements
+-A program causes the statements to be executed by calling the method and specifying any required method arguments
+-Every executed instruction is performed in the context of a method.
+-The Main method is the entry point for every java application and it is called by the JVM when the program is started.
+
+Method Signature
+modifier* return_type name(*argument) {
+ Statement;
+}
+
+Creating a method :
+public int funcName(int a, int b) { // body }
+  public : Access specifier
+  int: return type
+  funcName: function name
+  int a, int b: list of parameters
+
+Method/Local Variable
+	Variables that are written inside a method are called local variables.
+	These are destroyed when the method is exited
+
+Method Access
+-Calling a method on an object is like accessing a field.
+-After the object name, add a period, the name of the method, and parentheses.
+-Arguments are listed within the parentheses, and are separated by commas.
+-The dot notation is: <object>.<member>
+
+Method Parameters vs Arguments
+-The method definition holds the names and types of any parameters that are required.
+-Calling code calls the method, it provides concrete values called arguments for each parameter.
+-The arguments must be compatible with the parameter type
+-The argument name (if any) used in the calling code does not have to be the same as the
+parameter named defined in the method.
+
+Pass by value vs Pass by reference
+-When a value type is passed to a method, a copy is passed instead of the object itself.
+-Can pass a value-type by reference by using the ref keyword.
+-When an object of a reference type is passed to a method, a reference to the object is passed.
+-The method receives not the object itself but an argument that indicates the location of the object.
+
+Overloading Methods
+-Method name is same but have different parameters.
+
+Constructor
+A constructor initializes an object when it is created.
+-Has the same name as its class
+-Have no explicit return type.
+-Used to give initial values to the instance variables defined by the class
+-All classes have a default constructor that initializes all member variables to zero.
+-When own constructor is defined by the programmer, the default constructor is no longer
+used.
+
+Default Constructor
+-There is always a constructor in the class.
+-If the writer does not supply any constructor the default constructor is present automatically.
+
+Constructor Overloading
+-It can be overloaded
+Ex:- Student(int RollNo){}
+     Student(int RollNo, String Name){}
+

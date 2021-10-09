@@ -1,0 +1,64 @@
+What is a Variable?
+	A named storage that manipulates data
+	Ex: int a,b;
+	    a=10,b=20 //Initializing variables
+Variable Types
+-Local Variables
+-Instance Varibales
+-Class/Static Variables
+
+Local Variables
+-Are declared in methods, constructors, or blocks.
+-Are created when the method, constructor or blockis entered and the variable will be destroyed once it exits the method, constructor or block.
+-Access modifiers cannot be used for local variables.
+-Local variables are visible only within the declared method, constructor or block.
+-Local variables are implemented at stack level internally.
+
+Encapsulation
+-Refers to an object's ability to hide data and behavior that are not necessary to its user
+-Enables a group of properties, methods and other members to be considered a single unit
+-Encapsulation is also known as information hiding
+-Forces the user to use an interface to access data.
+-Makes the code more maintainable.
+Ex:- Class is an example of encapsulation
+
+Class and Object
+-A class is like a blueprint
+-It defines the data and behaviour of a type
+-Client code can use it by creating objects or instances which are assigned to a variable.
+-The variable remains in memory until all references to it go out of scope.
+-At that time, the JVM marks it as eligible for garbage collection.
+-Classes act as blue print for Objects
+
+Access control Modifiers
+-Visible to the package, the default. No modifiers are needed.
+-Visible to the class only (private).
+-Visible to the world (public).
+-Visible to the package and all subclasses (protected).
+
+Non Access Modifiers
+-The static modifier for creating class methods and variables
+-The final modifier for finalizing the implementations of classes, methods, and variables.
+-The abstract modifier for creating abstract classes and methods.
+-The synchronized and volatile modifiers, which are used for threads.
+
+Instance Variable
+- Declared in a class, but outside a method, constructor or any block.
+-When space is allocated for an object in the heap, a slot for each instance variable value is created.
+-Created when an object is created with the use of the keyword 'new' and destroyed when the object is destroyed.
+Instance variables have default values.
+-For numbers the default value is 0
+-for Booleans it is false
+-for object references it is null.
+
+Class/Static Variable
+-Class variables also known as static variables
+-Declared with the static keyword in a class, but outside a method.
+-There would only be one copy of each class variable per class, regardless of how many objects are created from it.
+-Static variables are created when the program starts and destroyed when the program stops.
+-Most static variables are declared public since they must be available for users of the class.
+-Values can be assigned during the declaration or within the constructor. Additionally values can be assigned in special static initializer blocks.
+-Static variables can be accessed by calling with the class name
+        .ClassName.VariableName.
+
+

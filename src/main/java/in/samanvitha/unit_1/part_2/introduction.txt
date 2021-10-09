@@ -1,0 +1,92 @@
+Java is an Object oriented programming language
+-Java was originally developed by Sun Microsystems
+- By James Gosling
+- Released in 1995 as the core component of Sun Microsystems
+
+It has multiple editions
+-Smart Cards
+-Micro Edition
+-Standard Edition
+-Enterprise Edition
+
+It follows a strict rule "Write Once, Run Anywhere"
+
+There are many features also known as buzz words in java. They are
+-Object Oriented
+-Platform independent
+-Simple
+-Secure
+-Architectural Neutral
+-Portable
+-Robust
+-Multi-threaded
+-Interpreted
+-High-Performance
+-Distributed
+-Dynamic
+
+Java undergoes 4 phases in the lifecycle
+-Edit
+-Compile
+-Load
+-Execute
+Explanation:
+Firstly any program in java is saved as .java
+That program with the help of compiler is loaded and .class file is produced. It contains byte codes.
+This class file is loaded by class loader into the memory.
+With the help of Java Virtual Machine byte code is transferred by interpreter into machine language.
+This byte code format can be executed in any system irrespective of their Operating Systems.
+
+Since it is an Object Oriented Programming Language. It has the following concepts
+-Encapsulation:
+    Binding of data and object into a single unit is called encapsulation.
+    Example Class contains both data members and member functions combined into a block
+    Access specifiers - private
+-Abstraction:
+    It shows only the necessary objects to the client object.
+    Access specifiers - public based on the perspective
+-Inheritance:
+    It exhibits the property of inheriting the properties of parent class to child class and extra properties can also be added to the child class.
+    It has a 2 kinds of relationships(Is - a and Has - a).
+    It supports single, multilevel, hierarchical inheritance
+    It does not support multiple inheritance.
+-Polymorphism:
+    It means that having many forms.
+    In detail a method with a same name can have different parameters.
+    It is classified into 2 types:
+    -Run time Polymorphism
+        Overriding - Same method name implemented in different extended classes.
+    -Compile time Polymorphism
+        Overloading - Same method name with different parameters in the same class.
+
+Access specifiers are classified into 4 types:
+-Private
+-Public
+-Protected
+-Default
+
+Primitive Data Types:
+Java prefers 8 types
+-Logical
+    boolean - true and false
+-Textual
+    char
+    Represents a 16-bit unicode Character.
+    It is represented in single quotes.
+-Integral
+    integer length    name       range
+    8 bits            byte       -2^7 to 2^7-1
+    16 bits           short      -2^15 to 2^15-1
+    32 bits           int        -2^31 to 2^31-1
+    64 bits           long       -2^63 to 2^63-1  (Ends with L or l)
+-Floating point
+    float
+        -32 bits
+        -Ends with F or f
+    double
+        -64 bits
+        -Ends with D or d
+
+Reference DataTypes:
+-Reference variables are created using defined constructors of the classes.
+-Class objects, and various type of array variables come under reference data type.

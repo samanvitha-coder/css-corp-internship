@@ -1,0 +1,143 @@
+Operators
+-Arithmetic Operators
+-Relational Operators
+-Bitwise Operators
+-Logical Operators
+-Assignment Operators
+
+Arithmetic Oprators
+ +,-,/,%,pre increment(++x),post increment(x++)
+ pre decrement(--x),post decrement(x--)
+An example
+class Addition {
+    public static void main(String[] args)
+    {
+        // initializing variables
+        int num1 = 10, num2 = 20, sum = 0;
+
+        // Displaying num1 and num2
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+
+        // adding num1 and num2
+        sum = num1 + num2;
+        System.out.println("The sum = " + sum);
+    }
+}
+Output:
+The sum = 30
+
+Relational Operators
+(==,!=,<,>,<=,>=)
+An example
+
+	public class Test{
+	public static void main(String args[]){
+	int a =10;
+	int b =20;
+	System.out.println("a == b = "+(a == b));
+	System.out.println("a != b = "+(a != b));
+	System.out.println("a > b = "+(a > b));
+	System.out.println("a < b = "+(a < b));
+	System.out.println("b >= a = "+(b >= a));
+	System.out.println("b <= a = "+(b <= a));
+	}
+Output:
+a == b = false
+a != b = true
+a > b false
+a < b true
+b >= a = true
+b <= a = false
+
+Bitwise Operators
+(&,|,^,~,<<,>>,<<<)
+
+An Example
+public class Test
+{
+public static void main(String args[])
+{
+int a =60; /* 60 = 0011 1100 */
+int b =13; /* 13 = 0000 1101 */
+int c =0; c = a & b;/* 12 = 0000 1100 */
+System.out.println("a & b = "+ c ); c = a | b;/* 61 = 0011 1101 */
+System.out.println("a | b = "+ c ); c = a ^ b;/* 49 = 0011 0001 */
+System.out.println("a ^ b = "+ c ); c =~a;/*-61 = 1100 0011 */
+System.out.println("~a = "+ c ); c = a <<2;/* 240 = 1111 0000 */
+System.out.println("a << 2 = "+ c ); c = a >>2;/* 215 = 1111 */
+System.out.println("a >> 2 = "+ c ); c = a >>>2;/* 215 = 0000 1111 */
+System.out.println("a >>> 2 = "+ c );
+} }
+
+Logical Operators
+(&&,||,!)
+
+public class Test
+{
+public static void main(String args[])
+{
+boolean a =true;
+boolean b =false;
+System.out.println("a && b = "+(a&&b));
+System.out.println("a || b = "+(a||b));
+System.out.println("!(a && b) = "+!(a && b));
+}
+}
+Output:
+a && b = false
+a || b = true
+!(a && b) = true
+
+Assignment Operators
+(+=,-=,*=,/=,%=,<<=,>>=,&=,^=,|=)
+
+Misc Operators
+-Conditional Operator ( ? : )
+-ternary operator
+-variable x = (expression) ? value if true : value if false
+
+InstanceOf Operator
+(Object reference variable ) instanceof (class/interface type)
+Example
+ String name = “James”;
+ boolean result = name instanceof String; // This will return true since name is type of String
+
+Class Vehicle{}
+public class Car extends Vehicle
+{
+public static void main(String args[])
+{
+Vehicle a =newCar();
+boolean result = a instanceofCar;
+System.out.println(result);
+}
+}
+
+String
+public class StringDemo {
+ public static void main(String args[]) {
+ String palindrome = "Dot saw I was Tod";
+ int len = palindrome.length();
+ System.out.println( "String Length is : " + len );
+ }
+Output:
+String Length is : 17
+
+Concatenating Strings
+string1.concat(string2);
+"My name is ".concat("Zara");
+
+Creating Format Strings
+-printf() and format() methods to print output with formatted numbers
+-format() method allows you to create a formatted string that you can reuse
+
+Program Structure:
+public class Sample
+{
+public static void main(String []a)
+{
+System.out.println(“Welcome to Java
+Programming…”);
+}
+}
