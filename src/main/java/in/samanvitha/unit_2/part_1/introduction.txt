@@ -1,0 +1,73 @@
+What is a Database?
+-A database is an organized collection of data, so that it can be easily accessed and managed.
+-You can organize data into tables, rows, columns, and index it to make it easier to find relevant information.
+
+Modes of storing data:
+-Flat File Model
+    A flat file is one that stores a representation of a simple database, which is known as a flat file database.
+    Flat files typically comprise text files with no markup, representing relational data by separating it with a comma or other delimiter.
+-Hierarchical Model
+    In a hierarchical model, data are viewed as a collection of tables, or we can say segments that form a hierarchical relation. In this, the data is organized into a tree-like structure where each record consists of one parent record and many children.
+    Even if the segments are connected as a chain-like structure by logical associations, then the instant structure can be a fan structure with multiple branches.
+-Relational Model
+    Relational Model represents how data is stored in Relational Databases.
+    A relational database stores data in the form of relations (tables)
+-Object-Oriented Model
+    In Object Oriented Data Model, data and their relationships are contained in a single structure which is referred as object in this data model.
+    In this, real world problems are represented as objects with different attributes.
+    All objects have multiple relationships between them
+-Network Model
+    This model replaces the hierarchical tree with a graph-like structure, and with that, there can more general connections among different nodes. It can have M: N relations i.e, many-to-many which allows a record to have more than one parent segment.
+    Here, a relationship is called a set, and each set is made up of at least 2 types of record which are given below:
+    An owner record that is the same as of parent in the hierarchical model.
+    A member record that is the same as of child in the hierarchical model.
+
+What is Normalization?
+-Database designed based on Entity Relationship (ER) model may have some amount of inconsistency, ambiguity and redundancy.
+-To resolve these issues some amount of refinement is required.
+-This refinement process is called as  Normalization.
+-It is a process of organizing the database to avoid redundancy and anomalies.
+
+Anomaly:
+    Problems that occur in poorly planned, un-normalized databases where all the data is stored in one table.
+    There are 3 types
+    -Insert Anomaly:
+        It occurs when certain attributes cannot be inserted into the database without the presence of other attributes.
+    -Update Anomaly:
+        An update anomaly exists when one or more instances of duplicate data is updated but not all.
+    -Delete Anomaly:
+        It occurs when certain attributes are lost because of the deletion of other attributes.
+
+Duplicate Data:
+-When an attribute is repeated twice any change has to be applied on all the attributes.
+-This redundancy will increase as the number of course offerings increases.
+
+Determinant
+–attribute X decides attribute Y
+–Example: In RESULT relation, Marks attribute may decide the grade attribute .(X->Y)
+
+Functional Dependency
+–Attribute Y is functional dependent on attribute X if each value of X determines exactly one value of Y
+Ex:-Course# -> CourseName
+   -Course#-> IName(Assuming one course is taught by one and only one instructor )
+   -Student#,Course#together (called composite attribute) defines EXACTLY ONE value of marks .
+    This can be symbolically represented as Student#Course# Marks
+
+Full functional dependency
+-Marks is fully functional dependent on student#Course#and not on the sub set ofStudent#Course#
+-CourseName is not fully functionally dependent on student#course#
+
+Partial Dependency
+-In a given relation R,
+ Attribute Y is partially dependent on the attribute X only if it is dependent on subset attribute X .
+
+Transitive Dependency
+-A functional dependency is said to be transitive if it is indirectly formed by two functional dependencies.
+For e.g.
+
+ X -> Z is a transitive dependency if the following three functional dependencies hold true:
+
+ X->Y
+ Y does not ->X
+ Y->Z
+

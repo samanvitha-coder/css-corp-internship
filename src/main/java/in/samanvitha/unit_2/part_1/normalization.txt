@@ -1,0 +1,53 @@
+Data Normalization
+-Formal process of decomposing relations with anomalies to produce smaller, well structured and stable relations
+-Primarily a tool to validate and improve a logical design so that it satisfies certain constraints
+  that avoid unnecessary duplication of data
+
+Well-Structured Relations
+-A relation that contains minimal data redundancy and allows users to insert, delete, and update rows
+  without causing data inconsistencies
+-Goal is to avoid (minimize) anomalies
+    – Insertion Anomaly – adding new rows forces user to create duplicate data
+    – Deletion Anomaly – deleting a row may cause loss of other data representing completely different facts
+    – Update  Anomaly – changing data in a row forces changes to other rows because of duplication
+
+First Normal Form (1NF)
+-If there are any multi valued attributes remove them.
+-Only atomic attributes (simple, single-value)
+-A primary key has been identified
+- Every relation is in 1NF by definition
+
+Functional Dependency:
+-The value of one attribute (the determinant) determines the value of another attribute.
+
+Candidate Key
+    – Attribute that uniquely identifies a row in a relation
+    – Could be a combination of (non-redundant) attributes
+    – Each non-key field is functionally dependent on every candidate key
+
+Second Normal Form (2NF)
+-It is in the first normal form ,and No partial dependency exists between non-key attributes and key attributes.
+– Every non-key attribute must be defined by the entire key, not by only part of the key
+
+Third Normal Form (3NF)
+-It is in 2NF
+-No transitive dependency exists between non-key attributes and key attributes.
+Note: This is called transitive, because the primary key is a determinant for another attribute, which in turn is a determinant for
+a third attribute
+
+Boyce-Codd Normal form (BCNF)
+– Slight difference with 3NF
+– To be in 3NF but not in BNF, needs two composite candidate keys, with one attribute of one key depending
+  on one attribute of the other
+– If a table contains only one candidate key, the 3NF and the BCNF are equivalent.
+
+-The difference between 3NF and BCNF is that for a functional dependency A  B, 3NF allows this dependency in a relation if B is a primary-key
+ attribute and A is not a candidate key, whereas BCNF insists that for this dependency to remain in a relation, A must be a candidate key
+
+Fourth Normal Form (4NF)
+– To break it, need to have multivalued dependencies, a generalization of functional dependencies
+- A multi-valued dependency exists when
+     – There are at least 3 attributes A, B, C in a relation and
+     – For each value of A there is a well defined set of values for B, and a well defined set of values for C,
+     – But the set of values for B is independent on the set of values for C
+
