@@ -1,0 +1,210 @@
+SQL Statements
+-Most of the actions you need to perform on a database are done with SQL statements.
+-SQL is not case sensitive
+
+4 types of statements
+Data Manipulation Language (DML)
+Data Definition Language (DDL)
+
+Data Definition Language
+CREATE
+DESC
+ALTER
+TRUNCATE
+DROP
+RENAME
+
+DML part of SQL:
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+
+The CREATE DATABASE Statement
+    The CREATE DATABASE statement is used to create a database.
+
+    SQL CREATE DATABASE Syntax
+
+    CREATE DATABASE database_name
+
+Example
+    We use the following CREATE TABLE statement:
+    CREATE TABLE Persons
+    (
+    P_Id int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+    )
+
+The TRUNCATE TABLE Statement
+    To delete the data inside the table, and not the table itself? use the TRUNCATE TABLE statement:
+
+    TRUNCATE TABLE table_name
+
+
+The ALTER TABLE Statement
+    The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+
+    SQL ALTER TABLE Syntax
+    To add a column in a table, use the following syntax:
+
+    ALTER TABLE table_name
+    ADD column_name datatype
+
+DROP COLUMN Example
+    We use this to delete a column
+
+        ALTER TABLE Persons
+        DROP COLUMN DateOfBirth
+
+The INSERT INTO Statement
+    The INSERT INTO statement is used to insert a new row in a table.
+
+    SQL INSERT INTO Syntax
+     INSERT INTO table_name
+    VALUES (value1, value2, value3,...)
+
+    INSERT INTO table_name (column1, column2, column3,...)
+    VALUES (value1, value2, value3,...)
+
+The SQL SELECT Statement
+
+    The SELECT statement is used to select data from  a database.
+    The result is stored in a result table, called the result-set.
+
+    SQL SELECT Syntax
+    SELECT column_name(s) FROM table_name
+
+    SELECT * FROM table_name
+
+The SQL SELECT DISTINCT Statement
+
+    The DISTINCT keyword can be used to return only distinct (different) values.
+    SQL SELECT DISTINCT Syntax
+    SELECT DISTINCT column_name(s) FROM table_name
+
+
+SQL WHERE Syntax
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator value
+
+Operators Allowed in the WHERE Clause
+
+    The AND & OR Operators
+    AND operator - if both the first condition and the second condition are true.
+    OR operator - if either the first condition or the second condition is true.
+
+     LIKE Syntax
+    SELECT column_name(s)
+    FROM table_name
+    WHERE column_name LIKE pattern
+
+    LIKE Operator Example
+    Now we want to select the persons living in a city that starts with "s" from the table above.
+
+    We use the following SELECT statement:
+    SELECT * FROM Persons
+    WHERE City LIKE 's%'
+
+    The "%" sign can be used to define wildcards (missing letters in the pattern) both before and after the pattern.
+
+    SQL Wildcards
+        SQL wildcards can substitute for one or more characters when searching for data in a database.
+        SQL wildcards must be used with the SQL LIKE operator.
+    Using the % Wildcard
+    Now we want to select the persons living in a city that starts with "sa" from the "Persons" table.
+    We use the following SELECT statement:
+    SELECT * FROM Persons
+    WHERE City LIKE 'sa%'
+
+    Using the _ Wildcard
+    Now we want to select the persons with a first name that starts with any character, followed by "la" from the "Persons" table.
+    We use the following SELECT statement:
+    SELECT * FROM Persons
+    WHERE FirstName LIKE '_la'
+
+    The ORDER BY Keyword
+    To sort the result-set by a specified column
+    The ORDER BY keyword sorts the records in ascending order by default.
+    To sort the records in a descending order, you can use the DESC keyword.
+    SQL ORDER BY Syntax
+        SELECT column_name(s)
+        FROM table_name
+        ORDER BY column_name(s) ASC|DESC
+
+    The IN Operator
+    The IN operator allows you to specify multiple values in a WHERE clause.
+    SQL IN Syntax
+    SELECT column_name(s)
+    FROM table_name
+    WHERE column_name IN (value1,value2,...)
+
+    The BETWEEN Operator
+    The BETWEEN operator selects a range of data between two values. The values can be numbers, text, or dates.
+    SQL BETWEEN Syntax
+    SELECT column_name(s)
+    FROM table_name
+    WHERE column_name
+    BETWEEN value1 AND value2
+
+    SQL Alias
+    You can give a table or a column another name by using an alias. This can be a good thing to do if you have very long or complex table names or column names.
+    An alias name could be anything, but usually it is short.
+    SQL Alias Syntax for Tables
+    SELECT column_name(s)
+    FROM table_name
+    AS alias_name
+    SQL Alias Syntax for Columns
+    SELECT column_name AS alias_name
+    FROM table_name
+
+
+The UPDATE Statement
+
+    The UPDATE statement is used to update existing records in a table.
+
+    SQL UPDATE Syntax
+    UPDATE table_name
+    SET column1=value, column2=value2,...
+    WHERE some_column=some_value
+
+The DELETE Statement
+    The DELETE statement is used to delete rows in a table.
+
+    SQL DELETE Syntax
+    DELETE FROM table_name
+    WHERE some_column=some_value
+
+    Note: Notice the WHERE clause in the DELETE syntax.
+    The WHERE clause specifies which record or records that should be deleted.
+
+
+SQL Working with Dates
+    Assume we have the following "Orders" table:
+    Now we want to select the records with an OrderDate of "2008-11-11" from the table above.
+    We use the following SELECT statement:
+    SELECT * FROM Orders WHERE OrderDate='2008-11-11'
+
+The GROUP BY Statement
+    The GROUP BY statement is used in conjunction with the aggregate functions to group the result-set by one or more columns.
+    SQL GROUP BY Syntax
+    SELECT column_name, aggregate_function(column_name)
+    FROM table_name
+    WHERE column_name operator value
+    GROUP BY column_name
+
+The HAVING Clause
+    The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+    SQL HAVING Syntax
+    SELECT column_name, aggregate_function(column_name)
+    FROM table_name
+    WHERE column_name operator value
+    GROUP BY column_name
+    HAVING aggregate_function(column_name) operator value
+
+
+

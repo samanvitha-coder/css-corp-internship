@@ -1,0 +1,113 @@
+Constraints
+Constraints are used to limit the type of data that can go into a table.
+Constraints can be specified when a table is created (with the CREATE TABLE statement) or after the table is created (with the ALTER TABLE statement).
+    NOT NULL
+    UNIQUE
+    PRIMARY KEY
+    FOREIGN KEY
+    CHECK
+    DEFAULT
+
+SQL NOT NULL Constraint
+    The NOT NULL constraint enforces a column to NOT accept NULL values.
+     CREATE TABLE Persons
+    (
+    P_Id int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+    )
+
+SQL UNIQUE Constraint
+     The UNIQUE constraint uniquely identifies each record in a database table.
+     The UNIQUE and PRIMARY KEY constraints both provide a guarantee for uniqueness for a column or set of columns.
+     A PRIMARY KEY constraint automatically has a UNIQUE constraint defined on it.
+     Note that you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
+
+     ALTER TABLE Persons
+     ADD UNIQUE (P_Id)
+
+SQL PRIMARY KEY Constraint
+    The PRIMARY KEY constraint uniquely identifies each record in a database table.
+    Primary keys must contain unique values.
+    A primary key column cannot contain NULL values.
+    Each table should have a primary key, and each table can have only ONE primary key.
+
+    CREATE TABLE Persons
+    (
+    P_Id int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255),
+    PRIMARY KEY (P_Id)
+    )
+
+SQL FOREIGN KEY Constraint
+    A FOREIGN KEY in one table points to a PRIMARY KEY in another table.
+    Why Foreign key?
+    The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables.
+    The FOREIGN KEY constraint also prevents invalid data from being inserted into the foreign key column,
+     because it has to be one of the values contained in the table it points to.
+    CREATE TABLE Orders
+    (
+    O_Id int NOT NULL,
+    OrderNo int NOT NULL,
+    P_Id int,
+    PRIMARY KEY (O_Id),
+    FOREIGN KEY (P_Id) REFERENCES Persons(P_Id)
+    )
+
+    CREATE TABLE Persons
+    (
+    P_Id int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255),
+    PRIMARY KEY (P_Id)
+    )
+
+SQL CHECK Constraint
+    The CHECK constraint is used to limit the value range that can be placed in a column.
+    If you define a CHECK constraint on a single column it allows only certain values for this column.
+    If you define a CHECK constraint on a table it can limit the values in certain columns based on values
+      in other columns in the row.
+    CREATE TABLE Persons
+    (
+    P_Id int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255),
+    CHECK (P_Id>0)
+    )
+
+SQL DEFAULT Constraint
+    The DEFAULT constraint is used to insert a default value into a column.
+    The default value will be added to all new records, if no other value is specified.
+    CREATE TABLE Persons
+    (
+    P_Id int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255) DEFAULT 'Sandnes'
+    )
+
+    The DEFAULT constraint can also be used to insert system values, by using functions like GETDATE():
+    CREATE TABLE Orders
+    (
+    O_Id int NOT NULL,
+    OrderNo int NOT NULL,
+    P_Id int,
+    OrderDate date DEFAULT GETDATE()
+    )
+
+
+
+
+
+
+

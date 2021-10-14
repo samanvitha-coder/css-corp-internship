@@ -1,0 +1,72 @@
+SQL JOIN
+    -SQL joins are used to query data from two or more tables,based on a relationship between certain columns in these tables.
+    -The JOIN keyword is used in an SQL statement to query data from two  or more tables, based on a relationship between certain columns in these tables.
+    -Tables in a database are often related to each other with keys.
+    -A primary key is a column (or a combination of columns) with a unique value for each row. Each primary key value must be unique within the table. The purpose is to bind data together, across tables, without repeating all of the data in every table.
+
+Different SQL JOINs
+JOIN: Return rows when there is at least one match in both tables
+LEFT JOIN: Return all rows from the left table, even if there are no matches in the right table
+RIGHT JOIN: Return all rows from the right table, even if there are no matches in the left table
+
+SQL INNER JOIN Keyword
+    The INNER JOIN keyword returns rows when there is at least one match in both tables.
+    SQL INNER JOIN Syntax
+    SELECT column_name(s)
+    FROM table_name1
+    INNER JOIN table_name2
+    ON table_name1.column_name=table_name2.column_name
+
+SQL LEFT JOIN Keyword
+    The LEFT JOIN keyword returns all rows from the left table (table_name1), even if there are no matches in the right table (table_name2).
+    SQL LEFT JOIN Syntax
+    SELECT column_name(s)
+    FROM table_name1
+    LEFT JOIN table_name2
+    ON table_name1.column_name=table_name2.column_name
+    PS: In some databases LEFT JOIN is called LEFT OUTER JOIN.
+
+SQL RIGHT JOIN Keyword
+     The RIGHT JOIN keyword returns all the rows from the right table (table_name2), even if there are no matches in the left table (table_name1).
+     SQL RIGHT JOIN Syntax
+     SELECT column_name(s)
+     FROM table_name1
+     RIGHT JOIN table_name2
+     ON table_name1.column_name=table_name2.column_name
+     PS: In some databases RIGHT JOIN is called RIGHT OUTER JOIN.
+
+The SQL UNION Operator
+    The UNION operator is used to combine the result-set of two or more SELECT statements.
+    Notice that each SELECT statement within the UNION must have the same number of columns. The columns must also have similar data types. Also, the columns in each SELECT statement must be in the same order.
+    SQL UNION Syntax
+    SELECT column_name(s) FROM table_name1
+    UNION
+        SELECT column_name(s) FROM table_name2
+    Note: The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL.
+    SQL UNION ALL Syntax
+        SELECT column_name(s) FROM table_name1
+        UNION ALL
+        SELECT column_name(s) FROM table_name2
+
+SQL CREATE VIEW Statement
+    In SQL, a view is a virtual table based on the result-set of an SQL statement.
+    A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+    You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.
+    SQL CREATE VIEW Syntax
+    CREATE VIEW view_name AS
+    SELECT column_name(s)
+    FROM table_name
+    WHERE condition
+
+SQL Updating a View
+    You can update a view by using the following syntax:
+    SQL CREATE OR REPLACE VIEW Syntax
+    CREATE OR REPLACE VIEW view_name AS
+    SELECT column_name(s)
+    FROM table_name
+    WHERE condition
+
+SQL Dropping a View
+    You can delete a view with the DROP VIEW command.
+    SQL DROP VIEW Syntax
+    DROP VIEW view_name

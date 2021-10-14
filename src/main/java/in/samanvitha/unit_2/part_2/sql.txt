@@ -1,0 +1,31 @@
+SQL
+-SQL is a standard language for accessing and manipulating databases.
+-SQL stands for Structured Query Language
+-SQL lets you access and manipulate databases
+-SQL is an ANSI (American National Standards Institute) standard
+
+What Can SQL do?
+can execute queries against a database
+can retrieve data from a database
+can insert records in a database
+can update records in a database
+can delete records from a database
+can create new databases
+can create new tables in a database
+can create stored procedures in a database
+can create views in a database
+can set permissions on tables, procedures, and views
+
+RDBMS
+-RDBMS stands for Relational Database Management System.
+-The data in RDBMS is stored in database objects called tables.
+-A table is a collection of related data entries and it consists of columns and rows.
+
+Database Tables
+-A database contains one or more tables
+-Each table is identified by a name (e.g. "Customers" or  "Orders").
+-Tables contain records (rows) with data.
+
+
+
+
