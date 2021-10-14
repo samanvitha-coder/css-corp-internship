@@ -1,0 +1,187 @@
+1.	Count()
+
+select * from emp;
+
+        ID NAME       CITY
+---------- ---------- ----------
+         1 a          vja
+         2 b          hyd
+         3 c          gnt
+         1 a          hyd
+
+SQL> select count(*) from emp;
+  COUNT(*)
+----------
+         4
+SQL> select count(id) from emp;
+ COUNT(ID)
+----------
+         4
+SQL> select count(distinct id) from emp;
+COUNT(DISTINCTID)
+-----------------
+                3
+
+2. SUM()
+
+SQL> select * from emp;
+        ID NAME       CITY
+---------- ---------- ----------
+         1 a          vja
+         2 b          hyd
+         3 c          gnt
+         1 a          hyd
+           d          vja
+SQL> select sum(id) from emp;
+   SUM(ID)
+----------
+         7
+
+3.AVG()
+
+SQL> select * from emp;
+        ID NAME       CITY
+---------- ---------- ----------
+         1 a          vja
+         2 b          hyd
+         3 c          gnt
+         1 a          hyd
+           d          vja
+SQL> select avg(id) from emp;
+   AVG(ID)
+----------
+      1.75
+
+4.MIN()
+
+SQL> select * from emp;
+
+        ID NAME       CITY
+---------- ---------- ----------
+         1 a          vja
+         2 b          hyd
+         3 c          gnt
+         1 a          hyd
+           d          vja
+SQL> select  min(id) from emp;
+   MIN(ID)
+----------
+         1
+
+5.MAX()
+
+SQL> select * from emp;
+        ID NAME       CITY
+---------- ---------- ----------
+         1 a          vja
+         2 b          hyd
+         3 c          gnt
+         1 a          hyd
+           d          vja
+SQL> select  max(id) from emp;
+   MAX(ID)
+----------
+         3
+
+GROUP BY
+
+SQL> select * from data;
+
+GENDER
+----------
+male
+female
+female
+female
+female
+female
+male
+male
+male
+female
+male
+
+SQL> select * from data group by gender;
+
+GENDER
+----------
+male
+female
+
+SQL> select count(gender),gender  from data group by gender;
+
+COUNT(GENDER) GENDER
+------------- ----------
+            8 male
+            8 female
+
+SQL> select avg(id),dept from emp group by dept;
+
+   AVG(ID) DEPT
+---------- ----------
+         2 cse
+       2.5 eee
+4.33333333 ece
+
+HAVING
+
+SQL> select * from emp;
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         4 d          cse              4000
+         5 e          ece              5000
+
+SQL> select count(id),dept from emp group by dept;
+
+ COUNT(ID) DEPT
+---------- ----------
+         2 cse
+         1 eee
+         2 ece
+
+SQL> select count(id),dept from emp group by dept having count(id)>1;
+
+ COUNT(ID) DEPT
+---------- ----------
+         2 cse
+         2 ece
+
+SQL> select max(sal),dept from emp group by dept having max(sal)>3000;
+
+  MAX(SAL) DEPT
+---------- ----------
+      4000 cse
+      5000 ece
+
+ORDER BY
+
+SQL> select * from emp;
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         8 b          ece              2000
+         3 c          eee              3000
+         4 d          cse              4000
+         5 e          ece              5000
+         1 z          ece              6000
+         2 b          cse              7000
+         4 f          ece              8000
+         1 a          cse              9000
+         4 d          ece              5000
+
+10 rows selected.
+
+SQL> select * from emp order by id asc;
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         1 a          cse              9000
+         1 z          ece              6000
+         2 b          cse              7000
+         3 c          eee              3000

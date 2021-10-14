@@ -1,0 +1,395 @@
+CREATE TABLE emp1(empno number(10),ename varchar2(15),job char(10),deptname varchar2(10),deptno number(9),hiredate date,
+salary number(8),exp number(5));
+
+DESC EMP1;
+NAME                                      NULL?    TYPE
+ ----------------------------------------- -------- ---------------------------
+ EMPNO                                                     NUMBER(10)
+ ENAME                                                         VARCHAR2(15)
+ JOB                                              		  CHAR(10)
+ DEPTNAME                                           	VARCHAR2(10)
+ DEPTNO                                             	NUMBER(9)
+ HIREDATE                                          	     DATE
+ SALARY                                           		  NUMBER(8)
+ EXP                                               		 NUMBER(5)
+
+ALTER TABLE emp1 MODIFY(ename VARCHAR2(20),salary NUMBER(5));
+
+ALTER TABLE emp1
+  DROP COLUMN hiredate;
+
+ALTER TABLE emp1
+  RENAME COLUMN salary TO sal;
+
+TRUNCATE  TABLE EMP1;
+
+ALTER TABLE emp1
+  RENAME TO employee1;
+
+DROP TABLE EMPLOYEE1;
+
+NOTNULL
+
+create table person(id int,name varchar2(10) not null,age int);
+Table created.
+
+insert  into person values(1,'a',30);
+
+insert into person values(2,'b',20);
+
+insert into person(age,name) values(25,'b');
+
+alter table person modify age int not null;
+
+into person(id,name) values(4,'d');
+insert into person(id,name) values(4,'d')
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SYSTEM"."PERSON"."AGE")
+
+DROP table person;
+
+UNIQUE
+
+create table person(id int unique,name varchar2(10),age int);
+
+insert into person values(1,'a',20);
+
+ insert into person values(2,'b',30);
+
+insert into person values(2,'c',30);
+insert into person values(2,'c',30)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C0011333) violated
+SQL UNIQUE Constraint on ALTER TABLE
+
+alter table person add constraint cst unique(id,name);
+Table altered.
+
+alter table person drop constraint cst ;
+
+CHECK
+
+create table person(id int,name varchar2(10),age int check(age>=18));
+
+insert into person values(1,'a',15);
+insert into person values(1,'a',15)
+*
+ERROR at line 1:
+ORA-02290: check constraint (SYSTEM.SYS_C0011337) violated
+
+insert into person values(1,'a',21);
+1 row created.
+
+alter table person drop constraint cst;
+Table altered.
+insert into person values(55,20,'vja');
+1 row created
+
+DEFAULT
+
+create table emp(id number(10),name varchar2(10),city varchar2(10) default 'vja');
+Table created.
+SQL> insert into emp values(1,'a','hyd');
+1 row created.
+SQL> insert into emp values(2,'b','vja');
+1 row created.
+
+> insert into emp(id,name) values(3,'c');
+1 row created.
+SQL> select * from emp;
+        ID NAME       CITY
+---------- ---------- ----------
+         1 a          hyd
+         2 b          vja
+         3 c          vja
+
+PRIMARY KEY on CREATE TABLE
+SQL> create table emp(id number primary key,name varchar2(10),sal int);
+Table created.
+SQL> insert into emp values(1,'a',1000);
+1 row created.
+Commit complete.
+SQL> insert into emp values(2,'b',2000);
+1 row created.
+Commit complete.
+SQL> insert into emp values(3,'c',3000);
+1 row created.
+Commit complete.
+SQL> insert into emp values(1,'c',3000);
+insert into emp values(1,'c',3000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C0011519) violated
+SQL> insert into emp(name,sal)values('a',5000);
+insert into emp(name,sal)values('a',5000)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SYSTEM"."EMP"."ID")
+
+Drop a primary key :
+Alter table tablename drop primary key
+Example :
+SQL> alter table emp drop primary key;
+Table altered.
+SQL> insert into emp values(1,'c',3000);
+1 row created.
+Commit complete.
+SQL> select * from emp;
+
+        ID NAME              SAL
+---------- ---------- ----------
+         1     a                1000
+         2     b                2000
+         3     c                3000
+         1     c                3000
+
+FOREIGN KEY
+> create table emp_data(eid int,city varchar2(10));
+
+alter table emp_data add constraint cst foreign key(eid)references emp(id);
+Table altered.
+
+alter table emp_data drop constraint cst;
+
+VIEWS
+
+SQL> select * from emp;
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         4 d          cse              4000
+         1 z          cse              5000
+         5 a          ece              6000
+         6 e          ece              7000
+         2 b          eee              9000
+8 rows selected.
+SQL> create view emp_view as select id,name from emp;
+View created
+SQL> select * from emp_view;
+        ID NAME
+---------- ----------
+         1 a
+         2 b
+         3 c
+         4 d
+         1 z
+         5 a
+         6 e
+         2 b
+8 rows selected.
+Drop a View :
+Drop view view name;
+
+SQL> drop view emp_view;
+
+View dropped.
+Example :
+SQL> select * from emp_view;
+select * from emp_view
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+Creating view with multiple tables
+
+SQL> select * from emp_view;
+select * from emp_view
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from emp;
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         4 d          cse              4000
+         1 z          cse              5000
+         5 a          ece              6000
+         6 e          ece              7000
+         2 b          eee              9000
+8 rows selected.
+
+
+
+1.	NOT
+
+SQL> select * from emp where not dept='cse';
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         2 b          ece              2000
+         3 c          eee              3000
+         2 a          ece              5000
+         1 a          ece              8000
+
+2.	BETWEEN AND OPERATOR
+
+SQL> select * from emp;
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         4 e          cse              6000
+         1 a          ece              8000
+7 rows selected.
+SQL> select * from emp where sal between 2000 and 7000;
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         4 e          cse              6000
+
+3 .AND operator
+
+SQL> select * from emp;
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         4 e          cse              6000
+         1 a          ece              8000
+
+7 rows selected.
+
+SQL> select * from emp where name='a' and sal >1000;
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              4000
+         2 a          ece              5000
+         1 a          ece              8000
+
+4.OR OPERATOR :
+
+SQL> select * from emp;
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         4 e          cse              6000
+         1 a          ece              8000
+7 rows selected.
+SQL> select * from emp where id<=3 OR  dept='cse';
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         4 e          cse              6000
+         1 a          ece              8000
+
+7 rows selected.
+
+5. IN Operator
+
+SQL> select * from emp;
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         4 e          cse              6000
+         1 a          ece              8000
+
+7 rows selected.
+
+SQL> select * from emp where id in(1,2,3);
+
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         1 a          ece              8000
+
+6 rows selected.
+
+7. The SQL LIKE Operator
+
+SQL> select * from data;
+NAME
+----------
+ramanujan
+frederick
+manasa
+geetha
+shankar
+stephen
+kc
+7 rows selected.
+SQL> select * from data where name like '%a';
+NAME
+----------
+manasa
+geetha
+SQL> select * from data where name like 's%';
+NAME
+----------
+shankar
+stephen
+
+8.EXISTS :
+
+select * from emp;
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          cse              1000
+         2 b          ece              2000
+         3 c          eee              3000
+         1 a          cse              4000
+         2 a          ece              5000
+         4 e          cse              6000
+         1 a          ece              8000
+Sql>select id from emp where exists(select id from emp where id>=3);
+        ID
+----------
+         1
+         2
+         3
+         1
+         2
+         4
+         1
+
+7 rows selected.
+
+9.The SQL ANY and ALL Operators
+
+SQL> select * from emp where id=any(select id from emp where dept='cse');
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         1 a          ece              8000
+         1 a          cse              4000
+         1 a          cse              1000
+         4 e          cse              6000
+
+SQL> select * from emp where id=all(select id from emp where dept='eee');
+        ID NAME       DEPT              SAL
+---------- ---------- ---------- ----------
+         3 c          eee              3000
+
